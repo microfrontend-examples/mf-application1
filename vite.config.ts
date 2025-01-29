@@ -2,9 +2,10 @@ import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import vitePluginSingleSpa from "vite-plugin-single-spa";
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
 export default defineConfig({
-  plugins: [react(), vitePluginSingleSpa({
+  plugins: [react(), TanStackRouterVite(), vitePluginSingleSpa({
     type: 'mife',
     projectId: 'mf-application1',
     serverPort: 4175,

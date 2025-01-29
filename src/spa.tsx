@@ -5,7 +5,8 @@ import singleSpaReact from 'single-spa-react';
 export const {bootstrap, mount, unmount} = singleSpaReact({
     React,
     ReactDOMClient,
-    loadRootComponent: () => import('./App').then((module) => module),
+    domElementGetter: () => document.getElementById('single-spa:main')!,
+    loadRootComponent: () => import('./root').then((module) => module.Root),
     errorBoundary(e, info, props) {
         console.log(e, info, props);
         // https://reactjs.org/docs/error-boundaries.html
