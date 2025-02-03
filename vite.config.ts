@@ -18,12 +18,20 @@ export default defineConfig(({mode}) => {
     preview: {
       port: Number(env.VITE_PORT),
     },
-    plugins: [react(), TanStackRouterVite(), vitePluginSingleSpa({
+    plugins: [react(), TanStackRouterVite(),
+      vitePluginSingleSpa({
       type: 'mife',
       projectId: 'mf-application1',
       serverPort: Number(env.VITE_PORT),
-      spaEntryPoints: 'src/spa.tsx',
-    })],
+      spaEntryPoints: 'src/spa.tsx'
+    })
+    ],
+    build: {
+      rollupOptions: {
+        external: ['react', 'react-dom/client'],
+        preserveEntrySignatures: 'strict',
+      },
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
